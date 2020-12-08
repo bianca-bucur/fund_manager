@@ -14,10 +14,6 @@ const addToStorage = (item) => {
   });
 }
 
-const removeOneFromStorage = () => {
-  DevSettings.remove({key})
-}
-
 module.exports = {
   addToStorage,
 };
