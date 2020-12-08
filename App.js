@@ -1,21 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Constants from 'expo-constants';
+import {
+  Provider as MainProvider,
+} from './contexts/main';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
-export default function App() {
+import  TopBar  from './components/TopBar';
+import  SideMenu  from './components/SideMenu';
+
+const App = (props) => {
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MainProvider {...props}>
+      <View style={styles.container}>
+        <TopBar />
+        <SideMenu />
+      </View>
+    </MainProvider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  statusBar: {
+    height: Constants.statusBarHeight
   },
 });
+
+export default App;
