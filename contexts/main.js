@@ -8,6 +8,7 @@ const Provider = ({
   children,
 }) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [addItemModalVisible, setAddItemModalVisible] = useState(false);
 
   const deviceOsVersion = Device.osVersion;
 
@@ -51,6 +52,8 @@ const Provider = ({
       value={{
         isSideMenuOpen,
         setIsSideMenuOpen,
+        addItemModalVisible,
+        setAddItemModalVisible,
         hasPermission,
         setPermissions,
       }}
